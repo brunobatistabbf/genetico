@@ -1,6 +1,6 @@
 import random
 
-# Define o alfabeto e a frase alvo
+# alfabeto e a frase alvo
 alfabeto = "abcdefghijklmnopqrstuvwxyz "
 alvo = "ciencia da computacao"
 
@@ -10,15 +10,15 @@ max_geracoes = 1000
 
 
 def fitness(individuo):
-    #Função de avaliação. Retorna a quantidade de caracteres corretos no indivíduo.
+    #Função de avaliação.
     return sum(1 for a, b in zip(individuo, alvo) if a == b)
 
-# Cria uma população inicial de indivíduos aleatórios
+# Cria uma população de indivíduos aleatórios
 populacao = [''.join(random.choice(alfabeto) for _ in range(len(alvo))) for _ in range(tam_pop)]
 
 for geracao in range(max_geracoes):
 
-    # Avalia cada indivíduo na população e ordena por fitness
+    # Avalia cada indivíduo e ordena por fitness
     avaliacoes = [(individuo, fitness(individuo)) for individuo in populacao]
     avaliacoes.sort(key=lambda x: x[1], reverse=True)
 
